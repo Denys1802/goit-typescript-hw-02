@@ -8,14 +8,19 @@
 */
 
 type User = {
-  name?: string;
-  surname?: string;
+  name: string;
+  surname: string;
   email: string;
   password: string;
 }
 
-function createOrUpdateUser(initialValues: User) {
-  // Оновлення користувача
+function createOrUpdateUser(initialValue: Partial<User>): User {
+  return {
+    name: initialValue.name || '',
+    surname: initialValue.surname || '',
+    email: initialValue.email || '',
+    password: initialValue.password || '',
+  };
 }
 
 createOrUpdateUser({ email: 'user@mail.com', password: 'password123' });
